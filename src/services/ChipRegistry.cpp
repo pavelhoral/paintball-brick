@@ -51,3 +51,7 @@ int ChipRegistry::indexOf(byte* uid) {
   }
   return -1;
 }
+
+int ChipRegistry::getCount() {
+  return count_;
+}

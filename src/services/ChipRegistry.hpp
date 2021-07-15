@@ -38,6 +38,11 @@ public:
    */
   int indexOf(byte* uid);
 
+  /**
+   * Get number of registered chips.
+   */
+  int getCount();
+
 private:
   /**
    * Current number of registered chips.

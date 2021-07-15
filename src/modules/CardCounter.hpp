@@ -1,16 +1,13 @@
-#ifndef SYSTEMTEST_HPP
-#define SYSTEMTEST_HPP
+#ifndef CARDCOUNTER_HPP
+#define CARDCOUNTER_HPP
 
 #include "GameModule.hpp"
 #include "../context.hpp"
 #include "../services/ChipRegistry.hpp"
 
-/**
- * System test module.
- */
-class SystemTest : public GameModule {
+class CardCounter : public GameModule {
 public:
-  SystemTest(Context context);
+  CardCounter(Context context);
   void setup();
   void loop();
 private:

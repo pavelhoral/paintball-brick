@@ -8,7 +8,7 @@
 
 /**
  * I/O context.
- */ 
+ */
 Context context;
 
 #include "modules/GameModule.hpp"
@@ -19,6 +19,8 @@ Context context;
 GameModule* module = NULL;
 
 #include "modules/SystemTest.hpp"
+#include "modules/CardCounter.hpp"
+#include "modules/ChipQuest.hpp"
 
 /**
  * Create game module with the given index.
@@ -26,11 +28,13 @@ GameModule* module = NULL;
 GameModule* createModule(uint8_t index) {
   switch (index) {
     case 0: return new SystemTest(context);
+    case 1: return new CardCounter(context);
+    case 2: return new ChipQuest(context);
     default: return NULL;
   }
 }
 
-#define SERIAL_MAGIC 58
+#define SERIAL_MAGIC 59
 #define SERIAL_OFFSET 4
 
 /**
@@ -44,7 +48,7 @@ void persist() {
 
 /**
  * Select module with the specified index.
- */ 
+ */
 boolean selectModule(uint8_t index, boolean save = false) {
   if (module != NULL) {
     delete module;
@@ -55,6 +59,7 @@ boolean selectModule(uint8_t index, boolean save = false) {
   context.input.reset();
 
   module = createModule(index);
+  Serial.println(index);
   if (module == NULL) {
     return false;
   }
@@ -96,7 +101,7 @@ void setup() {
  * Configuration loop.
  */
 void configure() {
-  uint32_t chipId = context.rfid.readChip();
+  //uint32_t chipId = context.rfid.readChip();
   // if (chipId == context.config.masterCard) {
   //   if (selectModule(state.moduleIndex, true)) {
   //     ConfigSignals::confirm(context);

@@ -6,9 +6,9 @@
 #include "interface/AudioOutput.hpp"
 #include "interface/ChipManager.hpp"
 
-struct CubeConfig {
+struct BrickConfig {
   uint32_t masterCard = 3002390521;
-  uint8_t moduleIndex = 0;
+  uint8_t moduleIndex = 2;
 };
 
 struct Context {
@@ -16,7 +16,7 @@ struct Context {
   MainDisplay display;
   ChipManager rfid;
   AudioOutput audio;
-  CubeConfig config;
+  BrickConfig config;
 };
 
 #endif
